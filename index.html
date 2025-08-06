@@ -3,83 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seven-Day Graphical Tropical Weather Outlook</title>
+  <title>My Projects</title>
   <style>
     body {
-      background-color: #b3d9f2;
       margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #1e1e2f;
+      color: white;
+      overflow-x: hidden;
     }
-    header {
-      text-align: center;
+
+    /* Sidebar */
+    .sidebar {
+      height: 100vh;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #292943;
+      overflow-x: hidden;
+      transition: 0.4s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 12px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background: #3f3f66;
+    }
+
+    /* Open button */
+    .open-btn {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background-color: #0077cc;
+      color: white;
+      border: none;
       padding: 10px;
-      background: #fff;
-      border-bottom: 2px solid #888;
-    }
-    header h1 {
-      margin: 0;
+      cursor: pointer;
       font-size: 20px;
+      border-radius: 0 5px 5px 0;
+      transition: 0.3s;
+      z-index: 1001;
     }
-    .top-news {
-      background: #fff;
-      padding: 10px;
-      border-bottom: 1px solid #888;
-      max-width: 700px;
-      margin: 0 auto;
+
+    .open-btn:hover {
+      background-color: #005fa3;
     }
-    .top-news ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 14px;
-    }
-    .top-news li {
-      color: red;
-      margin: 3px 0;
-    }
-    .map-container {
-      background: #fff;
-      margin: 20px auto;
-      padding: 10px;
-      max-width: 700px;
+
+    /* Main content */
+    .content {
+      margin-left: 0;
+      transition: 0.4s;
+      padding: 50px;
       text-align: center;
-      border: 1px solid #888;
     }
-    .map-container img {
-      max-width: 100%;
-      border: 1px solid #888;
+
+    .project-icon {
+      font-size: 60px;
+      margin: 20px;
+      display: inline-block;
+      transition: transform 0.2s;
     }
-    footer {
-      text-align: center;
-      font-size: 12px;
-      margin: 20px 0;
-      color: #555;
+
+    .project-icon:hover {
+      transform: scale(1.2);
+      color: #ffcc00;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Seven-Day Graphical Tropical Weather Outlook</h1>
-    <p>National Hurricane Center, Miami, Florida</p>
-  </header>
 
-  <div class="top-news">
-    <ul>
-      <li>NHC issuing advisories for the Atlantic on TS Dexter</li>
-      <li>NHC issuing advisories for the Eastern Pacific on TS Henriette</li>
-      <li>Marine warnings are in effect for the Eastern Pacific</li>
-      <li>NOAA predicts above normal 2025 Atlantic hurricane season</li>
-      <li>National Hurricane Center Products and Services Update for 2025 Hurricane Season</li>
-    </ul>
+  <div id="mySidebar" class="sidebar">
+    <a href="#">🌸 Super Mario Bros Flower Bloom</a>
+    <a href="#">∞ Infinity Project</a>
   </div>
 
-  <div class="map-container">
-    <img src="d46aa666-80dc-4c84-86b4-2cdcd00d0469.png" alt="Seven-Day Graphical Tropical Weather Outlook">
-    <p>Current Disturbances and Seven-Day Cyclone Formation Chance</p>
+  <button class="open-btn" onclick="toggleSidebar()">&lt;</button>
+
+  <div class="content" id="main">
+    <h1>Welcome to My Projects</h1>
+    <p>Click the <b>&lt;</b> button to open the project menu.</p>
+    <div>
+      <span class="project-icon">🌸</span>
+      <span class="project-icon">∞</span>
+    </div>
   </div>
 
-  <footer>
-    &copy; 2025 National Hurricane Center
-  </footer>
+  <script>
+    let sidebarOpen = false;
+    function toggleSidebar() {
+      const sidebar = document.getElementById("mySidebar");
+      const main = document.getElementById("main");
+      const btn = document.querySelector(".open-btn");
+
+      if (!sidebarOpen) {
+        sidebar.style.width = "250px";
+        main.style.marginLeft = "250px";
+        btn.innerHTML = "&gt;";
+      } else {
+        sidebar.style.width = "0";
+        main.style.marginLeft = "0";
+        btn.innerHTML = "&lt;";
+      }
+      sidebarOpen = !sidebarOpen;
+    }
+  </script>
+
 </body>
 </html>
